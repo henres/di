@@ -1,3 +1,3 @@
-module github.com/henres/di/v2
+module github.com/henres/di
 
 require github.com/stretchr/testify v1.3.0
