@@ -35,13 +35,6 @@ func (g *containerGetter) SafeGet(ctn *container, name string) (interface{}, err
 		return nil, fmt.Errorf("could not get `%s` because the definition does not exist", name)
 	}
 
-	if ctn.builtList.Has(def.Name) {
-		return nil, fmt.Errorf(
-			"could not get `%s` because there is a cycle in the object definitions (%v)",
-			def.Name, ctn.builtList.OrderedList(),
-		)
-	}
-
 	if ctn.scope != def.Scope {
 		return g.getInParent(ctn, def)
 	}
